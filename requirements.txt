@@ -53,7 +53,7 @@ streamlit==1.41.1
 tenacity==9.0.0
 toml==0.10.2
 tornado==6.4.2
-truthbrush @ file:///C:/Users/gabri/OneDrive/Documentos/XP/Dev/truthbrush
+truthbrush==0.1.9
 typing_extensions==4.12.2
 tzdata==2025.1
 urllib3==2.3.0
