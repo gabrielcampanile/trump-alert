@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 
 # Load environment variables and configuration
 load_dotenv()
-CHECK_INTERVAL = 15  # seconds
+CHECK_INTERVAL = 120  # seconds
 MAX_RETRIES = 3
 BACKOFF_TIME = 30
 
@@ -64,17 +64,16 @@ def send_email_notification(post_data):
     recipients = get_recipients()
 
     message = f"""
-Nova {'ReTruth' if post_data['is_retruth'] else 'postagem'} no Truth Social!
-----------------------------
-{'Post original de: @' + post_data['original_author'] if post_data['is_retruth'] else 'Autor: @' + post_data['username']}
-Data/Hora: {post_data['timestamp']}
+Nova {'ReTruth' if post_data['is_retruth'] else 'postagem'} de @{post_data['username']} {post_data['timestamp']}
+
 Conteúdo: {post_data['content']}
+
 Link: {post_data['url']}
 """
 
     try:
         msg = MIMEText(message)
-        msg['Subject'] = f"{'ReTruth' if post_data['is_retruth'] else 'Nova postagem'} de @{post_data['username']}"
+        msg['Subject'] = "Nova postagem no Truth Social"
         msg['From'] = sender
 
         with smtplib.SMTP('smtp.gmail.com', 587) as server:
@@ -126,6 +125,6 @@ def monitor_account(username):
                 error_count = 0
 
 if __name__ == "__main__":
-    # USERNAME = "bielcampanile"
-    USERNAME = "realDonaldTrump"
+    USERNAME = "bielcampanile"
+    # USERNAME = "realDonaldTrump"
     monitor_account(USERNAME)
