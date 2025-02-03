@@ -125,6 +125,6 @@ def monitor_account(username):
                 error_count = 0
 
 if __name__ == "__main__":
-    USERNAME = "bielcampanile"
-    # USERNAME = "realDonaldTrump"
+    # USERNAME = "bielcampanile"
+    USERNAME = "realDonaldTrump"
     monitor_account(USERNAME)
