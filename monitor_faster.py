@@ -64,9 +64,9 @@ def send_email_notification(post_data):
     recipients = get_recipients()
 
     message = f"""
-Nova {'ReTruth' if post_data['is_retruth'] else 'postagem'} de @{post_data['username']} {post_data['timestamp']}
+@{post_data['username']} {post_data['timestamp']}
 
-Conteúdo: {post_data['content']}
+{'ReTruth:' if post_data['is_retruth'] else ''} {post_data['content']}
 
 Link: {post_data['url']}
 """
